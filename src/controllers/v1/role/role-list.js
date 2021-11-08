@@ -71,8 +71,8 @@ async function getList(req) {
 
     switch (s[0]) {
       case 'application':
-        f.orderBy('sso.role.modified_at', 'desc');
         f.orderBy('application.name', s[1]);
+        f.orderBy('sso.role.modified_at', 'desc');
         break;
       default:
         f.orderBy(`sso.role.${s[0]}`, s[1]);
