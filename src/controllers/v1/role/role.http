@@ -46,7 +46,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "code": "test",
+  "id_application": "998726b6-4b3d-4ff8-a619-4ab1ae1ba366",
+  "code": "test1",
   "name": "Test",
   "description": "Test Description"
 }
