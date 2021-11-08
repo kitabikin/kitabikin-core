@@ -8,6 +8,7 @@ exports.up = function (knex) {
     t.string('signup_with');
     t.boolean('is_email').defaultTo(true);
     t.boolean('is_active').defaultTo(true);
+    t.boolean('is_delete').defaultTo(false);
     t.uuid('created_id');
     t.timestamp('created_at').defaultTo(knex.fn.now());
     t.uuid('modified_id');
