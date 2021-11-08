@@ -46,14 +46,14 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id_application": "998726b6-4b3d-4ff8-a619-4ab1ae1ba366",
-  "code": "test1",
-  "name": "Test",
-  "description": "Test Description"
+  "id_application": "8f725fb8-2c8a-4de9-89ea-c6e5f1173fbb",
+  "code": "event-test",
+  "name": "TEST",
+  "description": ""
 }
 
 #### Create Response
-@id = {{create.response.body.data.id_application}}
+@id = {{create.response.body.data.id_role}}
 
 ### Read =======================================================================
 
