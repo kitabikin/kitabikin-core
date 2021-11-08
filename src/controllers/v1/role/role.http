@@ -68,9 +68,10 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id_application": "{{id}}",
-  "code": "test-1",
-  "name": "Test 1",
+  "id_role": "{{id}}",
+  "id_application": "998726b6-4b3d-4ff8-a619-4ab1ae1ba366",
+  "code": "event-test",
+  "name": "TEST 1",
   "description": "Test 1 Description",
   "is_active": true
 }
@@ -82,6 +83,6 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id_application": "{{id}}",
-  "is_active": false
+  "id_role": "{{id}}",
+  "is_delete": true
 }
