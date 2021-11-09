@@ -82,7 +82,7 @@ async function getList(req) {
 
   const fQuery = (f) => {
     if (!_.isNil(query)) {
-      f.where('sso.user.name', 'ilike', '%' + query + '%');
+      f.where('profile.name', 'ilike', '%' + query + '%');
     }
   };
 

@@ -24,7 +24,7 @@ async function getTotal(req) {
 
   const fQuery = (f) => {
     if (_.isNil(query) === false) {
-      f.where('sso.user.name', 'ilike', '%' + query + '%');
+      f.where('profile.name', 'ilike', '%' + query + '%');
     }
   };
 
@@ -37,6 +37,9 @@ async function getTotal(req) {
   const qTotal = await UserModel.query()
     .first()
     .count({ count: 'sso.user.id_user' })
+    .groupBy('sso.user.id_user')
+    .groupBy('profile.id_profile')
+    .withGraphJoined('profile')
     .modify(fQuery)
     .modify(fWhere);
 
