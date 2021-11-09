@@ -46,6 +46,23 @@ class UserModel extends Model {
       loginSelects(query) {
         query.select('id_user', 'username');
       },
+
+      defaultSelects(query) {
+        query.select(
+          'sso.user.id_user',
+          'sso.user.username',
+          'sso.user.email',
+          'sso.user.referral_code',
+          'sso.user.signup_with',
+          'sso.user.is_email',
+          'sso.user.is_active',
+          'sso.user.is_delete',
+          'sso.user.created_id',
+          'sso.user.created_at',
+          'sso.user.modified_id',
+          'sso.user.modified_at'
+        );
+      },
     };
   }
 }
