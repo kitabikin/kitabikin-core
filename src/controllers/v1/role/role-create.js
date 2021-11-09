@@ -19,6 +19,7 @@ async function getCreate(req) {
   const code = req.body.code;
   const name = req.body.name;
   const description = req.body.description;
+  const isActive = req.body.is_active;
   const createdId = req.decoded.id_user;
 
   const insert = {
@@ -26,6 +27,7 @@ async function getCreate(req) {
     code,
     name,
     description,
+    is_active: isActive,
     created_id: createdId,
   };
 

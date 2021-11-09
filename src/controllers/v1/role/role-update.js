@@ -25,7 +25,7 @@ async function getUpdate(req) {
   const isActive = req.body.is_active;
   const isDelete = req.body.is_delete;
   const modifiedId = req.decoded.id_user;
-  const modifiedAt = moment().format('YYYY-MM-DD HH:mm:ss');
+  const modifiedAt = moment().format('YYYY-MM-DD HH:mm:ss.SSS');
 
   const update = {
     id_role: pUniq,
