@@ -41,6 +41,7 @@ async function getLogin(req) {
       ]`
     )
     .where({
+      'sso.user.is_delete': false,
       'sso.user.is_active': true,
       'sso.user.username': username,
       'sso.user.password': SHA256(password).toString(),
