@@ -1,5 +1,5 @@
 const { Ok, ErrorHandler } = require('@core/helpers/response');
-const EventModel = require('@core/models/invitation/event.model');
+const EventPackageModel = require('@core/models/invitation/event-package.model');
 
 const moment = require('moment');
 const _ = require('lodash');
@@ -25,12 +25,21 @@ async function getUpdate(req) {
   const update = req.body;
 
   _.assign(update, {
-    id_event: pUniq,
+    id_event_package: pUniq,
     modified_id: modifiedId,
     modified_at: modifiedAt,
   });
 
-  const qUpdate = await EventModel.query().first().upsertGraphAndFetch(update);
+  _.assign(update.event_price, {
+    created_id: modifiedId,
+  });
+
+  const qUpdate = await EventPackageModel.query()
+    .first()
+    .returning('*')
+    .upsertGraph(update, {
+      noDelete: ['event_price'],
+    });
 
   return qUpdate;
 }

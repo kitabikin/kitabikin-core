@@ -1,14 +1,11 @@
 const { Model } = require('objection');
 const { db } = require('@core/config/connection');
 
-// MODELS
-const EventPackageModel = require('./event-package.model');
-
 Model.knex(db);
 
 class EventPriceModel extends Model {
   static get tableName() {
-    return 'event.event_price';
+    return 'invitation.event_price';
   }
 
   static get idColumn() {
@@ -16,13 +13,15 @@ class EventPriceModel extends Model {
   }
 
   static get relationMappings() {
+    const EventPackageModel = require('./event-package.model');
+
     return {
       event_package: {
         relation: Model.BelongsToOneRelation,
         modelClass: EventPackageModel,
         join: {
-          from: 'event.event_price.id_event_package',
-          to: 'event.event_package.id_event_package',
+          from: 'invitation.event_price.id_event_package',
+          to: 'invitation.event_package.id_event_package',
         },
       },
     };

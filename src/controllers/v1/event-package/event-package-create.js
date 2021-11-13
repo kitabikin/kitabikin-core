@@ -1,5 +1,5 @@
 const { Ok, ErrorHandler } = require('@core/helpers/response');
-const EventModel = require('@core/models/invitation/event.model');
+const EventPackageModel = require('@core/models/invitation/event-package.model');
 
 const _ = require('lodash');
 
@@ -25,7 +25,14 @@ async function getCreate(req) {
     created_id: createdId,
   });
 
-  const qInsert = await EventModel.query().first().insertGraphAndFetch(insert);
+  _.assign(insert.event_price, {
+    created_id: createdId,
+  });
+
+  const qInsert = await EventPackageModel.query()
+    .first()
+    .withGraphFetched('event_price(orderByCreatedAt)')
+    .insertGraphAndFetch(insert);
 
   return qInsert;
 }
