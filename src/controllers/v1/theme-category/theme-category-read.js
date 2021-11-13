@@ -1,9 +1,9 @@
 const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
 const { Filter } = require('@core/helpers/filter');
-const EventPackageModel = require('@core/models/invitation/event-package.model');
+const ThemeCategoryModel = require('@core/models/invitation/theme-category.model');
 
 const _ = require('lodash');
-const { Populate } = require('./event-package-populate');
+const { Populate } = require('./theme-category-populate');
 
 const read = async (req, res) => {
   try {
@@ -30,7 +30,7 @@ async function getRead(req) {
 
   const fWhere = (f) => {
     if (!_.isNil(where)) {
-      Filter(f, 'invitation.event_package', where);
+      Filter(f, 'invitation.theme_category', where);
     }
   };
 
@@ -40,12 +40,7 @@ async function getRead(req) {
     }
   };
 
-  const qRead = await EventPackageModel.query()
-    .first()
-    .withGraphFetched('event_price(orderByCreatedAt)')
-    .findById(pUniq)
-    .modify(fWhere)
-    .modify(fWith);
+  const qRead = await ThemeCategoryModel.query().first().findById(pUniq).modify(fWhere).modify(fWith);
 
   return qRead;
 }
