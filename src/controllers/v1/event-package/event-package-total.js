@@ -1,6 +1,6 @@
 const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
 const { Filter } = require('@core/helpers/filter');
-const EventModel = require('@core/models/invitation/event.model');
+const EventPackageModel = require('@core/models/invitation/event-package.model');
 
 const _ = require('lodash');
 
@@ -24,19 +24,19 @@ async function getTotal(req) {
 
   const fQuery = (f) => {
     if (_.isNil(query) === false) {
-      f.where('invitation.event.name', 'ilike', '%' + query + '%');
+      f.where('invitation.event_package.name', 'ilike', '%' + query + '%');
     }
   };
 
   const fWhere = (f) => {
     if (!_.isNil(where)) {
-      Filter(f, 'invitation.event', where);
+      Filter(f, 'invitation.event_package', where);
     }
   };
 
-  const qTotal = await EventModel.query()
+  const qTotal = await EventPackageModel.query()
     .first()
-    .count({ count: 'invitation.event.id_event' })
+    .count({ count: 'invitation.event_package.id_event_package' })
     .modify(fQuery)
     .modify(fWhere);
 

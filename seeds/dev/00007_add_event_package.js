@@ -1,8 +1,8 @@
 exports.seed = function (knex) {
-  return knex('event.event_package')
+  return knex('invitation.event_package')
     .del()
     .then(function () {
-      return knex('event.event_package').insert([
+      return knex('invitation.event_package').insert([
         {
           id_event_package: 'd2ed6fe4-8504-4392-8ac2-31d8df106791',
           id_event: '2b3b4de1-ed5c-4b5a-9b62-1059344c5775',

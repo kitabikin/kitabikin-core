@@ -1,10 +1,6 @@
 const { Model } = require('objection');
 const { db } = require('@core/config/connection');
 
-// MODELS
-const ApplicationModel = require('./application.model');
-const UserModel = require('./user.model');
-
 Model.knex(db);
 
 class RoleModel extends Model {
@@ -17,6 +13,9 @@ class RoleModel extends Model {
   }
 
   static get relationMappings() {
+    const ApplicationModel = require('./application.model');
+    const UserModel = require('./user.model');
+
     return {
       application: {
         relation: Model.BelongsToOneRelation,

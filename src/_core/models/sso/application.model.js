@@ -1,9 +1,6 @@
 const { Model } = require('objection');
 const { db } = require('@core/config/connection');
 
-// MODELS
-const RoleModel = require('./role.model');
-
 Model.knex(db);
 
 class ApplicationModel extends Model {
@@ -16,6 +13,8 @@ class ApplicationModel extends Model {
   }
 
   static get relationMappings() {
+    const RoleModel = require('./role.model');
+
     return {
       role: {
         relation: Model.HasManyRelation,

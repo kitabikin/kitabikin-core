@@ -1,8 +1,9 @@
 const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
 const { Filter } = require('@core/helpers/filter');
-const EventModel = require('@core/models/invitation/event.model');
+const EventPackageModel = require('@core/models/invitation/event-package.model');
 
 const _ = require('lodash');
+const { Populate } = require('./event-package-populate');
 
 const read = async (req, res) => {
   try {
@@ -25,6 +26,7 @@ const read = async (req, res) => {
 async function getRead(req) {
   const pUniq = req.params.uniq;
   const where = req.query.where;
+  const populate = req.query.with;
 
   const fWhere = (f) => {
     if (!_.isNil(where)) {
@@ -32,7 +34,18 @@ async function getRead(req) {
     }
   };
 
-  const qRead = await EventModel.query().first().returning('*').findById(pUniq).modify(fWhere);
+  const fWith = (f) => {
+    if (!_.isNil(populate)) {
+      Populate(f, populate);
+    }
+  };
+
+  const qRead = await EventPackageModel.query()
+    .first()
+    .withGraphFetched('event_price(orderByCreatedAt)')
+    .findById(pUniq)
+    .modify(fWhere)
+    .modify(fWith);
 
   return qRead;
 }

@@ -1,10 +1,10 @@
 const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
 const { Filter } = require('@core/helpers/filter');
 const { Pagination } = require('@core/helpers/pagination');
-const EventModel = require('@core/models/invitation/event.model');
+const EventPackageModel = require('@core/models/invitation/event-package.model');
 
-const { getTotal } = require('./event-total');
-const { Populate } = require('./event-populate');
+const { getTotal } = require('./event-package-total');
+const { Populate } = require('./event-package-populate');
 
 const _ = require('lodash');
 
@@ -66,21 +66,21 @@ async function getList(req) {
   const fSort = (f) => {
     if (_.isNil(sort) === false) {
       const s = sort.split(':');
-      f.orderBy(`invitation.event.${s[0]}`, s[1]);
+      f.orderBy(`invitation.event_package.${s[0]}`, s[1]);
     } else {
-      f.orderBy('invitation.event.modified_at', 'desc');
+      f.orderBy('invitation.event_package.modified_at', 'desc');
     }
   };
 
   const fQuery = (f) => {
     if (_.isNil(query) === false) {
-      f.where('invitation.event.name', 'ilike', '%' + query + '%');
+      f.where('invitation.event_package.name', 'ilike', '%' + query + '%');
     }
   };
 
   const fWhere = (f) => {
     if (!_.isNil(where)) {
-      Filter(f, 'invitation.event', where);
+      Filter(f, 'invitation.event_package', where);
     }
   };
 
@@ -90,7 +90,8 @@ async function getList(req) {
     }
   };
 
-  const qList = await EventModel.query()
+  const qList = await EventPackageModel.query()
+    .withGraphFetched('event_price(orderByCreatedAt)')
     .modify(fStart)
     .modify(fLimit)
     .modify(fSort)

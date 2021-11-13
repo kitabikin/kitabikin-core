@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.withSchema('event').createTable('event', function (t) {
+  return knex.schema.withSchema('invitation').createTable('event', function (t) {
     t.uuid('id_event').primary().defaultTo(knex.raw('gen_random_uuid()'));
     t.string('code').unique().notNullable();
     t.string('name').notNullable();
@@ -16,5 +16,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.withSchema('event').dropTable('event');
+  return knex.schema.withSchema('invitation').dropTable('event');
 };
