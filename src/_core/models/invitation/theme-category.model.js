@@ -14,6 +14,7 @@ class ThemeCategoryModel extends Model {
 
   static get relationMappings() {
     const EventModel = require('./event.model');
+    const ThemeModel = require('./theme.model');
 
     return {
       event: {
@@ -22,6 +23,14 @@ class ThemeCategoryModel extends Model {
         join: {
           from: 'invitation.theme_category.id_event',
           to: 'invitation.event.id_event',
+        },
+      },
+      theme: {
+        relation: Model.HasManyRelation,
+        modelClass: ThemeModel,
+        join: {
+          from: 'invitation.theme_category.id_theme_category',
+          to: 'invitation.theme.id_theme_category',
         },
       },
     };
