@@ -3,7 +3,7 @@ const { db } = require('@core/config/connection');
 
 Model.knex(db);
 
-class ThemeCategoryModel extends Model {
+class ThemeModel extends Model {
   static get tableName() {
     return 'invitation.theme';
   }
@@ -14,6 +14,7 @@ class ThemeCategoryModel extends Model {
 
   static get relationMappings() {
     const ThemeCategoryModel = require('./theme-category.model');
+    const ThemeFeatureModel = require('./theme-feature.model');
 
     return {
       theme_category: {
@@ -24,8 +25,16 @@ class ThemeCategoryModel extends Model {
           to: 'invitation.theme_category.id_theme_category',
         },
       },
+      theme_feature: {
+        relation: Model.HasManyRelation,
+        modelClass: ThemeFeatureModel,
+        join: {
+          from: 'invitation.theme.id_theme',
+          to: 'invitation.theme_feature.id_theme',
+        },
+      },
     };
   }
 }
 
-module.exports = ThemeCategoryModel;
+module.exports = ThemeModel;
