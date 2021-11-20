@@ -43,6 +43,17 @@ const getPopulate = (f, populate, isTotal = false) => {
             f.withGraphJoined('theme_feature_column(orderByOrder)');
           }
           break;
+        case 'theme_feature_mapping':
+          if (isTotal) {
+            f.leftJoin(
+              'invitation.theme_feature_mapping as theme_feature_mapping',
+              'theme_feature_mapping.id_theme_feature',
+              'theme_feature.id_theme_feature'
+            );
+          } else {
+            f.withGraphJoined('theme_feature_mapping.[event_package]');
+          }
+          break;
         case 'theme':
           if (isTotal) {
             f.leftJoin('invitation.theme as theme', 'theme.id_theme', 'invitation.theme_feature.id_theme');
