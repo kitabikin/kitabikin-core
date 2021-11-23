@@ -34,6 +34,14 @@ class ThemeFeatureModel extends Model {
           to: 'invitation.theme_feature_column.id_theme_feature',
         },
       },
+      column: {
+        relation: Model.HasManyRelation,
+        modelClass: ThemeFeatureColumnModel,
+        join: {
+          from: 'invitation.theme_feature.id_theme_feature',
+          to: 'invitation.theme_feature_column.id_theme_feature',
+        },
+      },
       theme_feature_mapping: {
         relation: Model.HasManyRelation,
         modelClass: ThemeFeatureMappingModel,

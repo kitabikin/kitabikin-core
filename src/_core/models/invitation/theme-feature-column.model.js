@@ -14,6 +14,7 @@ class ThemeFeatureColumnModel extends Model {
 
   static get relationMappings() {
     const ThemeFeatureModel = require('./theme-feature.model');
+    const InvitationFeatureDataModel = require('./invitation-feature-data.model');
 
     return {
       theme_feature: {
@@ -22,6 +23,14 @@ class ThemeFeatureColumnModel extends Model {
         join: {
           from: 'invitation.theme_feature_column.id_theme_feature',
           to: 'invitation.theme_feature.id_theme_feature',
+        },
+      },
+      data: {
+        relation: Model.HasManyRelation,
+        modelClass: InvitationFeatureDataModel,
+        join: {
+          from: 'invitation.theme_feature_column.id_theme_feature_column',
+          to: 'invitation.invitation_feature_data.id_theme_feature_column',
         },
       },
     };

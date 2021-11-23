@@ -15,8 +15,10 @@ const single = async (req, res) => {
 };
 
 async function getCreate(req) {
+  const folder = req.body.folder;
+
   const image = await cloudinary.uploader.upload(req.file.path, {
-    folder: 'invitation/theme',
+    folder: folder,
     use_filename: true,
   });
 

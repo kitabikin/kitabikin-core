@@ -62,6 +62,10 @@ class UserModel extends Model {
           'sso.user.modified_at'
         );
       },
+
+      invitationSelects(query) {
+        query.select('sso.user.id_user', 'sso.user.username');
+      },
     };
   }
 }

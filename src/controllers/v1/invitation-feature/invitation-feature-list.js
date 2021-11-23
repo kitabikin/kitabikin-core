@@ -1,11 +1,11 @@
 const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
 const { Pagination } = require('@core/helpers/pagination');
-const UserModel = require('@core/models/sso/user.model');
+const InvitationFeatureModel = require('@core/models/invitation/invitation-feature.model');
 
-const { getTotal } = require('./user-total');
-const { Populate } = require('./user-populate');
-const { Sort } = require('./user-sort');
-const { Filter } = require('./user-filter');
+const { getTotal } = require('./invitation-feature-total');
+const { Populate } = require('./invitation-feature-populate');
+const { Sort } = require('./invitation-feature-sort');
+const { Filter } = require('./invitation-feature-filter');
 
 const _ = require('lodash');
 
@@ -48,35 +48,28 @@ async function getList(req) {
   const start = req.query.start;
   const limit = req.query.limit;
   const sort = req.query.sort;
-  const query = req.query.search;
   const where = req.query.where;
   const populate = req.query.with;
 
   const fStart = (f) => {
-    if (!_.isNil(start)) {
+    if (_.isNil(start) === false) {
       f.offset(start);
     }
   };
 
   const fLimit = (f) => {
-    if (!_.isNil(limit)) {
+    if (_.isNil(limit) === false) {
       f.limit(limit);
     }
   };
 
   const fSort = (f) => {
     if (_.isNil(sort)) {
-      f.orderBy('sso.user.modified_at', 'desc');
+      f.orderBy('invitation.invitation_feature.id_invitation_feature', 'desc');
       return;
     }
 
     Sort(f, sort);
-  };
-
-  const fQuery = (f) => {
-    if (!_.isNil(query)) {
-      f.where('profile.name', 'ilike', '%' + query + '%');
-    }
   };
 
   const fWhere = (f) => {
@@ -91,12 +84,10 @@ async function getList(req) {
     }
   };
 
-  const qList = await UserModel.query()
-    .modify('defaultSelects')
+  const qList = await InvitationFeatureModel.query()
     .modify(fStart)
     .modify(fLimit)
     .modify(fSort)
-    .modify(fQuery)
     .modify(fWhere)
     .modify(fWith);
 

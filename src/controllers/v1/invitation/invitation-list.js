@@ -1,11 +1,11 @@
 const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
 const { Pagination } = require('@core/helpers/pagination');
-const UserModel = require('@core/models/sso/user.model');
+const InvitationModel = require('@core/models/invitation/invitation.model');
 
-const { getTotal } = require('./user-total');
-const { Populate } = require('./user-populate');
-const { Sort } = require('./user-sort');
-const { Filter } = require('./user-filter');
+const { getTotal } = require('./invitation-total');
+const { Populate } = require('./invitation-populate');
+const { Sort } = require('./invitation-sort');
+const { Filter } = require('./invitation-filter');
 
 const _ = require('lodash');
 
@@ -53,20 +53,20 @@ async function getList(req) {
   const populate = req.query.with;
 
   const fStart = (f) => {
-    if (!_.isNil(start)) {
+    if (_.isNil(start) === false) {
       f.offset(start);
     }
   };
 
   const fLimit = (f) => {
-    if (!_.isNil(limit)) {
+    if (_.isNil(limit) === false) {
       f.limit(limit);
     }
   };
 
   const fSort = (f) => {
     if (_.isNil(sort)) {
-      f.orderBy('sso.user.modified_at', 'desc');
+      f.orderBy('invitation.invitation.modified_at', 'desc');
       return;
     }
 
@@ -74,8 +74,8 @@ async function getList(req) {
   };
 
   const fQuery = (f) => {
-    if (!_.isNil(query)) {
-      f.where('profile.name', 'ilike', '%' + query + '%');
+    if (_.isNil(query) === false) {
+      f.where('invitation.invitation.name', 'ilike', '%' + query + '%');
     }
   };
 
@@ -91,8 +91,7 @@ async function getList(req) {
     }
   };
 
-  const qList = await UserModel.query()
-    .modify('defaultSelects')
+  const qList = await InvitationModel.query()
     .modify(fStart)
     .modify(fLimit)
     .modify(fSort)
