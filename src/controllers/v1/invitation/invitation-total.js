@@ -1,8 +1,8 @@
 const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const UserModel = require('@core/models/sso/user.model');
+const InvitationModel = require('@core/models/invitation/invitation.model');
 
-const { Relation } = require('./user-populate');
-const { Filter } = require('./user-filter');
+const { Relation } = require('./invitation-populate');
+const { Filter } = require('./invitation-filter');
 
 const _ = require('lodash');
 
@@ -27,7 +27,7 @@ async function getTotal(req) {
 
   const fQuery = (f) => {
     if (_.isNil(query) === false) {
-      f.where('profile.name', 'ilike', '%' + query + '%');
+      f.where('invitation.invitation.name', 'ilike', '%' + query + '%');
     }
   };
 
@@ -43,9 +43,9 @@ async function getTotal(req) {
     }
   };
 
-  const qTotal = await UserModel.query()
+  const qTotal = await InvitationModel.query()
     .first()
-    .count({ count: 'sso.user.id_user' })
+    .count({ count: 'invitation.invitation.id_invitation' })
     .modify(fQuery)
     .modify(fWhere)
     .modify(fWith);

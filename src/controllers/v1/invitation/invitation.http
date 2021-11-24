@@ -1,6 +1,6 @@
-@baseUrl = http://localhost:3000/
+@baseUrl = http://localhost:1800/
 @version = v1
-@endpoint = user
+@endpoint = invitation
 
 @username = {{$dotenv REST_KITABIKIN_USERNAME}}
 @password = {{$dotenv REST_KITABIKIN_PASSWORD}}
@@ -30,13 +30,14 @@ Authorization: Bearer {{token}}
 ### List =======================================================================
 
 GET {{baseUrl}}{{version}}/{{endpoint}}
-    ?start=0
-    &sort=profile:asc
-    &with[profile]=true
-    &with[role]=true
-    &where[0][role:id_application]=8f725fb8-2c8a-4de9-89ea-c6e5f1173fbb
-    &where[0][role:id_role]=30cb66e6-7c61-4115-8099-f0493b6ee925
-    &limit=10 HTTP/1.1
+    ?sort=modified_at:asc
+    &with[user]=true
+    # &with[event]=true
+    # &with[event_package]=true
+    # &with[theme_category]=true
+    # &with[theme]=true
+    # &where[0][theme:code]=goldengold
+    &where[1][is_delete]=false HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -48,31 +49,27 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "username": "test",
-  "password": "password",
-  "email": "test@kitabikin.com",
-  "referral_code": "REFTES",
-  "signup_with": "web",
-  "is_active": true,
-  "profile": {
-    "name": "Test"
-  },
-  "role": [{
-    "id_role": "c8ce3d8d-8c30-40a4-afbc-e011605c6cbd"
-  },
-  {
-    "id_role": "59f2e21b-0524-4db8-ae08-87a16f4ddd53"
-  }]
+  "id_user": "e09401a0-a70c-4909-8b89-ae31620ff72c",
+  "id_event": "2b3b4de1-ed5c-4b5a-9b62-1059344c5775",
+  "id_event_package": "57a4a1a4-01ca-48f1-9af6-302cbc374ce1",
+  "id_theme_category": "1feb89c2-d62d-4e9d-90d7-7e4e50b7c582",
+  "id_theme": "79336e5d-6e84-4465-bb66-c0d4ce1bf0fa",
+  "code": "yudarani",
+  "name": "Yuda & Rani",
+  "invitation_at": "2020-11-30",
+  "description": null,
+  "is_active": false
 }
 
 #### Create Response
-@id = {{create.response.body.data.id_user}}
+@id = {{create.response.body.data.id_invitation}}
+@code = yuda-alisa
 
 ### Read =======================================================================
 
-GET {{baseUrl}}{{version}}/{{endpoint}}/{{id}} HTTP/1.1
+GET {{baseUrl}}{{version}}/{{endpoint}}/{{code}} HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer {{token}}
+# Authorization: Bearer {{token}}
 
 ### Update =====================================================================
 
@@ -81,22 +78,16 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "username": "testubah",
-  "password": "passwords",
-  "email": "tests@kitabikin.com",
-  "referral_code": "REFTET",
-  "signup_with": "web",
-  "is_active": false,
-  "profile": {
-    "id_profile": "2a402a9f-82ee-478a-9c69-e5e4c170d738",
-    "name": "Test Ubah"
-  },
-  "role": [{
-    "id_role": "c8ce3d8d-8c30-40a4-afbc-e011605c6cbd"
-  },
-  {
-    "id_role": "4c818743-c1da-4f90-bca8-0e3a9b55826d"
-  }]
+  "id_user": "e09401a0-a70c-4909-8b89-ae31620ff72c",
+  "id_event": "2b3b4de1-ed5c-4b5a-9b62-1059344c5775",
+  "id_event_package": "57a4a1a4-01ca-48f1-9af6-302cbc374ce1",
+  "id_theme_category": "1feb89c2-d62d-4e9d-90d7-7e4e50b7c582",
+  "id_theme": "79336e5d-6e84-4465-bb66-c0d4ce1bf0fa",
+  "code": "yudarani",
+  "name": "Yuda & Rani",
+  "invitation_at": "2020-11-30",
+  "description": null,
+  "is_active": false
 }
 
 ### Delete =====================================================================
@@ -106,6 +97,6 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "id_user": "{{id}}",
-  "is_delete": true
+  "id_event": "{{id}}",
+  "is_active": false
 }
