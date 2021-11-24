@@ -75,6 +75,19 @@ const getPopulate = (f, populate, isTotal = false) => {
             f.withGraphJoined('theme');
           }
           break;
+        case 'invitation_feature':
+          if (isTotal) {
+            f.leftJoin(
+              'invitation.invitation_feature as invitation_feature',
+              'invitation_feature.id_invitation',
+              'invitation.id_invitation'
+            );
+          } else {
+            f.withGraphJoined(
+              'invitation_feature(publicSelects) as feature.[theme_feature(publicSelects), invitation_feature_data(publicSelects) as data.[theme_feature_column(publicSelects)]]'
+            );
+          }
+          break;
         default:
           break;
       }

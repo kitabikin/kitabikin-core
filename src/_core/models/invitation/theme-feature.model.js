@@ -52,6 +52,26 @@ class ThemeFeatureModel extends Model {
       },
     };
   }
+
+  static get modifiers() {
+    return {
+      orderByOrder(query) {
+        query.orderBy('invitation.theme_feature.order', 'asc');
+      },
+
+      publicSelects(query) {
+        query.select(
+          'invitation.theme_feature.code',
+          'invitation.theme_feature.name',
+          'invitation.theme_feature.order',
+          'invitation.theme_feature.description',
+          'invitation.theme_feature.is_active',
+          'invitation.theme_feature.is_admin',
+          'invitation.theme_feature.is_new'
+        );
+      },
+    };
+  }
 }
 
 module.exports = ThemeFeatureModel;

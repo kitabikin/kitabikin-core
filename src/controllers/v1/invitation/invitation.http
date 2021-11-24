@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3000/
+@baseUrl = http://localhost:1800/
 @version = v1
 @endpoint = invitation
 
@@ -63,12 +63,13 @@ Authorization: Bearer {{token}}
 
 #### Create Response
 @id = {{create.response.body.data.id_invitation}}
+@code = yuda-alisa
 
 ### Read =======================================================================
 
-GET {{baseUrl}}{{version}}/{{endpoint}}/{{id}} HTTP/1.1
+GET {{baseUrl}}{{version}}/{{endpoint}}/{{code}} HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer {{token}}
+# Authorization: Bearer {{token}}
 
 ### Update =====================================================================
 

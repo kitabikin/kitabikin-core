@@ -44,6 +44,14 @@ class InvitationFeatureModel extends Model {
       },
     };
   }
+
+  static get modifiers() {
+    return {
+      publicSelects(query) {
+        query.select('invitation.invitation_feature.is_active');
+      },
+    };
+  }
 }
 
 module.exports = InvitationFeatureModel;

@@ -41,6 +41,10 @@ class ThemeFeatureColumnModel extends Model {
       orderByOrder(query) {
         query.orderBy('order', 'asc');
       },
+
+      publicSelects(query) {
+        query.select('invitation.theme_feature_column.code');
+      },
     };
   }
 }

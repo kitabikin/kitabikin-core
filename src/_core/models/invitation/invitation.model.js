@@ -71,6 +71,24 @@ class InvitationModel extends Model {
       },
     };
   }
+
+  static get modifiers() {
+    return {
+      filterCode(query, code) {
+        query.where('invitation.invitation.code', code);
+      },
+
+      publicSelects(query) {
+        query.select(
+          'invitation.invitation.code',
+          'invitation.invitation.name',
+          'invitation.invitation.invitation_at',
+          'invitation.invitation.description',
+          'invitation.invitation.is_active'
+        );
+      },
+    };
+  }
 }
 
 module.exports = InvitationModel;
