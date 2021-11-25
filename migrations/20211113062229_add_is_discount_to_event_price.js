@@ -5,5 +5,7 @@ exports.up = function (knex, Promise) {
 };
 
 exports.down = function (knex, Promise) {
-  return knex.schema.withSchema('invitation').dropColumn('is_discount');
+  return knex.schema.withSchema('invitation').table('event_price', function (t) {
+    t.dropColumn('is_discount');
+  });
 };
