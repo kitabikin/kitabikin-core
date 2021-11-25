@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { CheckToken } = require('@core/helpers/middleware');
+const { CheckAccess, CheckToken } = require('@core/helpers/middleware');
 
 const { total } = require('./theme-total');
 const { list } = require('./theme-list');
@@ -10,10 +10,21 @@ const { update } = require('./theme-update');
 
 const router = express.Router();
 
+// Total
 router.get('/total', CheckToken, total);
-router.get('/', CheckToken, list);
+
+// List
+router.get('/', [CheckAccess, CheckToken], list);
+router.get('/', list);
+
+// Create
 router.post('/', CheckToken, create);
-router.get('/:uniq', CheckToken, read);
+
+// Read
+router.get('/:uniq', [CheckAccess, CheckToken], read);
+router.get('/:uniq', read);
+
+// Update
 router.put('/:uniq', CheckToken, update);
 
 module.exports = router;

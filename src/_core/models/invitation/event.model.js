@@ -35,6 +35,30 @@ class EventModel extends Model {
       },
     };
   }
+
+  static get modifiers() {
+    return {
+      filterCode(query, code) {
+        query.where('invitation.event.code', code);
+      },
+
+      orderByModifiedAt(query, dir) {
+        query.orderBy('invitation.event.modified_at', dir);
+      },
+
+      publicSelects(query) {
+        query.select(
+          'invitation.event.code',
+          'invitation.event.name',
+          'invitation.event.image',
+          'invitation.event.banner',
+          'invitation.event.description',
+          'invitation.event.is_active',
+          'invitation.event.modified_at'
+        );
+      },
+    };
+  }
 }
 
 module.exports = EventModel;

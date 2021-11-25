@@ -35,6 +35,30 @@ class ThemeModel extends Model {
       },
     };
   }
+
+  static get modifiers() {
+    return {
+      filterCode(query, code) {
+        query.where('invitation.theme.code', code);
+      },
+
+      orderByModifiedAt(query, dir) {
+        query.orderBy('invitation.theme.modified_at', dir);
+      },
+
+      publicSelects(query) {
+        query.select(
+          'invitation.theme.code',
+          'invitation.theme.name',
+          'invitation.theme.image',
+          'invitation.theme.banner',
+          'invitation.theme.description',
+          'invitation.theme.is_active',
+          'invitation.theme.modified_at'
+        );
+      },
+    };
+  }
 }
 
 module.exports = ThemeModel;

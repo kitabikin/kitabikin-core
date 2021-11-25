@@ -55,6 +55,14 @@ class ThemeFeatureModel extends Model {
 
   static get modifiers() {
     return {
+      filterCode(query, code) {
+        query.where('invitation.theme_feature.code', code);
+      },
+
+      orderByModifiedAt(query, dir) {
+        query.orderBy('invitation.theme_feature.modified_at', dir);
+      },
+
       orderByOrder(query) {
         query.orderBy('invitation.theme_feature.order', 'asc');
       },
@@ -67,7 +75,8 @@ class ThemeFeatureModel extends Model {
           'invitation.theme_feature.description',
           'invitation.theme_feature.is_active',
           'invitation.theme_feature.is_admin',
-          'invitation.theme_feature.is_new'
+          'invitation.theme_feature.is_new',
+          'invitation.theme_feature.modified_at'
         );
       },
     };
