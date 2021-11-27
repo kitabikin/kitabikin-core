@@ -43,12 +43,13 @@ class ThemeFeatureColumnModel extends Model {
       },
 
       publicSelects(query) {
-        query.select('invitation.theme_feature_column.code');
+        query.select('invitation.theme_feature_column.code', 'invitation.theme_feature_column.label');
       },
 
       publicThemeSelects(query) {
         query.select(
           'invitation.theme_feature_column.code',
+          'invitation.theme_feature_column.label',
           'invitation.theme_feature_column.default_value as value'
         );
       },
