@@ -1,0 +1,18 @@
+version: '3'
+services:
+  kitabikin-core-dev:
+    build:
+      context: .
+      dockerfile: .docker/dev.dockerfile
+    image: kitabikincom/kitabikin-core:dev
+    container_name: 'kitabikin-core-dev'
+    ports:
+      - '18011:3000'
+    env_file:
+      - .env.development
+    restart: always
+    networks:
+      - kitabikin-dev-networks
+
+networks:
+  kitabikin-dev-networks:
