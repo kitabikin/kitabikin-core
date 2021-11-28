@@ -9,7 +9,7 @@ services:
     ports:
       - '18011:3000'
     env_file:
-      - .env.development
+      - .env
     restart: always
     networks:
       - kitabikin-dev-networks
