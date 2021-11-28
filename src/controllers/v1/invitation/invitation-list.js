@@ -45,6 +45,7 @@ const list = async (req, res) => {
 };
 
 async function getList(req) {
+  const access = req.access;
   const start = req.query.start;
   const limit = req.query.limit;
   const sort = req.query.sort;
@@ -87,17 +88,29 @@ async function getList(req) {
 
   const fWith = (f) => {
     if (!_.isNil(populate)) {
-      Populate(f, populate);
+      Populate(f, populate, access);
     }
   };
 
-  const qList = await InvitationModel.query()
-    .modify(fStart)
-    .modify(fLimit)
-    .modify(fSort)
-    .modify(fQuery)
-    .modify(fWhere)
-    .modify(fWith);
+  let qList;
+  if (access === 'private') {
+    qList = await InvitationModel.query()
+      .modify(fStart)
+      .modify(fLimit)
+      .modify(fSort)
+      .modify(fQuery)
+      .modify(fWhere)
+      .modify(fWith);
+  } else {
+    qList = await InvitationModel.query()
+      .modify('publicSelects')
+      .modify(fStart)
+      .modify(fLimit)
+      .modify(fSort)
+      .modify(fQuery)
+      .modify(fWhere)
+      .modify(fWith);
+  }
 
   return qList;
 }

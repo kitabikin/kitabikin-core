@@ -24,6 +24,7 @@ const read = async (req, res) => {
 };
 
 async function getRead(req) {
+  const access = req.access;
   const pUniq = req.params.uniq;
   const where = req.query.where;
   const populate = req.query.with;
@@ -36,11 +37,21 @@ async function getRead(req) {
 
   const fWith = (f) => {
     if (!_.isNil(populate)) {
-      Populate(f, populate);
+      Populate(f, populate, access);
     }
   };
 
-  const qRead = await InvitationModel.query().first().findById(pUniq).modify(fWhere).modify(fWith);
+  let qRead;
+  if (access === 'private') {
+    qRead = await InvitationModel.query().first().findById(pUniq).modify(fWhere).modify(fWith);
+  } else {
+    qRead = await InvitationModel.query()
+      .first()
+      .modify('publicSelects')
+      .modify('filterCode', pUniq)
+      .modify(fWhere)
+      .modify(fWith);
+  }
 
   return qRead;
 }
