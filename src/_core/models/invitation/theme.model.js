@@ -57,6 +57,7 @@ class ThemeModel extends Model {
 
       publicSelects(query) {
         query.select(
+          'invitation.theme.id_theme',
           'invitation.theme.code',
           'invitation.theme.name',
           'invitation.theme.image',

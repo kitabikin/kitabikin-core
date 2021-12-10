@@ -89,6 +89,7 @@ class InvitationModel extends Model {
 
       publicSelects(query) {
         query.select(
+          'invitation.invitation.id_invitation',
           'invitation.invitation.code',
           'invitation.invitation.name',
           'invitation.invitation.invitation_at',
