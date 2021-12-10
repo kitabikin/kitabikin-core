@@ -31,17 +31,11 @@ const getFilter = (f, where) => {
     }
 
     switch (table) {
-      case 'theme_category':
-        GlobalFilter(f, 'theme_category', { [newKey]: where[k] });
-        break;
-      case 'event':
-        GlobalFilter(f, 'theme_category:event', { [newKey]: where[k] });
-        break;
-      case 'theme_greeting':
-        GlobalFilter(f, 'theme_greeting', { [newKey]: where[k] });
+      case 'theme':
+        GlobalFilter(f, 'theme', { [newKey]: where[k] });
         break;
       default:
-        GlobalFilter(f, 'invitation.theme', where);
+        GlobalFilter(f, 'invitation.theme_greeting', where);
         break;
     }
   });

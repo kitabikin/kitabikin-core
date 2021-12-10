@@ -10,6 +10,10 @@ const Sort = (f, sort) => {
       f.orderBy('theme_category:event.name', s[1]);
       f.orderBy('invitation.theme.modified_at', 'desc');
       break;
+    case 'theme_greeting':
+      f.orderBy('theme_greeting.name', s[1]);
+      f.orderBy('invitation.theme.modified_at', 'desc');
+      break;
     default:
       f.orderBy(`invitation.theme.${s[0]}`, s[1]);
       break;

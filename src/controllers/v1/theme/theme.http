@@ -33,9 +33,10 @@ GET {{baseUrl}}{{version}}/{{endpoint}}
     ?start=0
     # &with[theme_category]=true
     # &with[event]=true
+    # &with[theme_greeting]=true
     &with[theme_feature]=true
     # &sort=event:desc
-    &where[0][is_delete]=false
+    # &where[0][is_delete]=false
     # &where[1][event:code][0]=wedding
     # &where[1][event:id_event][0]=9f857f29-be38-442c-8fef-0c0170b2e74f
     &limit=4 HTTP/1.1

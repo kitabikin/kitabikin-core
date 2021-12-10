@@ -19,6 +19,7 @@ class InvitationModel extends Model {
     const ThemeCategoryModel = require('./theme-category.model');
     const ThemeModel = require('./theme.model');
     const InvitationFeatureModel = require('./invitation-feature.model');
+    const InvitationGreetingModel = require('./invitation-greeting.model');
 
     return {
       user: {
@@ -67,6 +68,14 @@ class InvitationModel extends Model {
         join: {
           from: 'invitation.invitation.id_invitation',
           to: 'invitation.invitation_feature.id_invitation',
+        },
+      },
+      invitation_greeting: {
+        relation: Model.HasManyRelation,
+        modelClass: InvitationGreetingModel,
+        join: {
+          from: 'invitation.invitation.id_invitation',
+          to: 'invitation.invitation_greeting.id_invitation',
         },
       },
     };

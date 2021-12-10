@@ -15,6 +15,7 @@ class ThemeModel extends Model {
   static get relationMappings() {
     const ThemeCategoryModel = require('./theme-category.model');
     const ThemeFeatureModel = require('./theme-feature.model');
+    const ThemeGreetingModel = require('./theme-greeting.model');
 
     return {
       theme_category: {
@@ -31,6 +32,14 @@ class ThemeModel extends Model {
         join: {
           from: 'invitation.theme.id_theme',
           to: 'invitation.theme_feature.id_theme',
+        },
+      },
+      theme_greeting: {
+        relation: Model.HasManyRelation,
+        modelClass: ThemeGreetingModel,
+        join: {
+          from: 'invitation.theme.id_theme',
+          to: 'invitation.theme_greeting.id_theme',
         },
       },
     };

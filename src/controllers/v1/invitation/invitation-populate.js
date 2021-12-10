@@ -73,6 +73,13 @@ const getPopulate = (f, populate, access) => {
             );
           }
           break;
+        case 'invitation_greeting':
+          if (access === 'private') {
+            f.withGraphJoined('invitation_greeting');
+          } else {
+            f.withGraphJoined('invitation_greeting(publicSelects)');
+          }
+          break;
         default:
           break;
       }
@@ -126,6 +133,13 @@ const getRelation = (f, populate) => {
           f.leftJoin(
             'invitation.invitation_feature as invitation_feature',
             'invitation_feature.id_invitation',
+            'invitation.id_invitation'
+          );
+          break;
+        case 'invitation_greeting':
+          f.leftJoin(
+            'invitation.invitation_greeting as invitation_greeting',
+            'invitation_greeting.id_invitation',
             'invitation.id_invitation'
           );
           break;

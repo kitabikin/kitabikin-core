@@ -50,6 +50,13 @@ const getPopulate = (f, populate, access) => {
             );
           }
           break;
+        case 'theme_greeting':
+          if (access === 'private') {
+            f.withGraphJoined('theme_greeting');
+          } else {
+            f.withGraphJoined('theme_greeting(publicSelects)');
+          }
+          break;
         default:
           break;
       }
@@ -88,6 +95,20 @@ const getRelation = (f, populate) => {
             'invitation.event as theme_category:event',
             'theme_category:event.id_event',
             'theme_category.id_event'
+          );
+          break;
+        case 'theme_feature':
+          f.leftJoin(
+            'invitation.theme_feature as theme_feature',
+            'theme_feature.id_theme',
+            'invitation.theme.id_theme'
+          );
+          break;
+        case 'theme_greeting':
+          f.leftJoin(
+            'invitation.theme_greeting as theme_greeting',
+            'theme_greeting.id_theme',
+            'invitation.theme.id_theme'
           );
           break;
         default:
