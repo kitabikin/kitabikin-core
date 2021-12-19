@@ -2,11 +2,11 @@ const express = require('express');
 
 const { CheckAccess, CheckToken } = require('@core/helpers/middleware');
 
-const { total } = require('./theme-greeting-total');
-const { list } = require('./theme-greeting-list');
-const { create } = require('./theme-greeting-create');
-const { read } = require('./theme-greeting-read');
-const { update } = require('./theme-greeting-update');
+const { total } = require('./invitation-guest-book-total');
+const { list } = require('./invitation-guest-book-list');
+const { create } = require('./invitation-guest-book-create');
+const { read } = require('./invitation-guest-book-read');
+const { update } = require('./invitation-guest-book-update');
 
 const router = express.Router();
 
@@ -14,8 +14,7 @@ const router = express.Router();
 router.get('/total', CheckToken, total);
 
 // List
-router.get('/', [CheckAccess, CheckToken], list);
-router.get('/', list);
+router.get('/', CheckToken, list);
 
 // Create
 router.post('/', [CheckAccess, CheckToken], create);

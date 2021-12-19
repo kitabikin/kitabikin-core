@@ -11,10 +11,12 @@ const themeCategory = require('./theme-category');
 const theme = require('./theme');
 const themeFeature = require('./theme-feature');
 const themeGreeting = require('./theme-greeting');
+const themeGuestBook = require('./theme-guest-book');
 const invitation = require('./invitation');
 const invitationFeature = require('./invitation-feature');
 const invitationFeatureData = require('./invitation-feature-data');
 const invitationGreeting = require('./invitation-greeting');
+const invitationGuestBook = require('./invitation-guest-book');
 
 const router = express.Router();
 
@@ -29,9 +31,11 @@ router.use('/theme-category', themeCategory);
 router.use('/theme', theme);
 router.use('/theme-feature', themeFeature);
 router.use('/theme-greeting', themeGreeting);
+router.use('/theme-guest-book', themeGuestBook);
 router.use('/invitation', invitation);
 router.use('/invitation-feature', invitationFeature);
 router.use('/invitation-feature-data', invitationFeatureData);
 router.use('/invitation-greeting', invitationGreeting);
+router.use('/invitation-guest-book', invitationGuestBook);
 
 module.exports = router;
