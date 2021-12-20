@@ -18,17 +18,22 @@ const update = async (req, res) => {
 };
 
 async function getUpdate(req) {
+  const access = req.access;
   const pUniq = req.params.uniq;
-  const modifiedId = req.decoded.id_user;
   const modifiedAt = moment().format('YYYY-MM-DD HH:mm:ss.SSS');
 
   const update = req.body;
 
   _.assign(update, {
     id_theme_guest_book: pUniq,
-    modified_id: modifiedId,
     modified_at: modifiedAt,
   });
+
+  if (access === 'private') {
+    _.assign(update, {
+      modified_id: req.decoded.id_user,
+    });
+  }
 
   const qUpdate = await ThemeGuestBookModel.query().first().upsertGraphAndFetch(update);
 
