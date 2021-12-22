@@ -1,6 +1,16 @@
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 
+const CheckAccess = (req, res, next) => {
+  if (_.isNil(req.headers.authorization)) {
+    req.access = 'public';
+    next('route');
+  } else {
+    req.access = 'private';
+    next();
+  }
+};
+
 const CheckToken = (req, res, next) => {
   if (_.isNil(req.headers.authorization)) {
     res.status(403).json({
@@ -41,5 +51,6 @@ const CheckToken = (req, res, next) => {
 };
 
 module.exports = {
+  CheckAccess,
   CheckToken,
 };

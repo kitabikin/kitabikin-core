@@ -22,8 +22,9 @@ async function getUpdate(req) {
   const name = req.body.name;
   const description = req.body.description;
   const isActive = req.body.is_active;
+  const isDelete = req.body.is_delete;
   const modifiedId = req.decoded.id_user;
-  const modifiedAt = moment().format('YYYY-MM-DD HH:mm:ss');
+  const modifiedAt = moment().format('YYYY-MM-DD HH:mm:ss.SSS');
 
   const update = {
     id_application: pUniq,
@@ -31,6 +32,7 @@ async function getUpdate(req) {
     name,
     description,
     is_active: isActive,
+    is_delete: isDelete,
     modified_id: modifiedId,
     modified_at: modifiedAt,
   };

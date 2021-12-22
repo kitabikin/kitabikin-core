@@ -1,10 +1,6 @@
 const { Model } = require('objection');
 const { db } = require('@core/config/connection');
 
-// MODELS
-const ProfileModel = require('./profile.model');
-const RoleModel = require('./role.model');
-
 Model.knex(db);
 
 class UserModel extends Model {
@@ -17,6 +13,9 @@ class UserModel extends Model {
   }
 
   static get relationMappings() {
+    const ProfileModel = require('./profile.model');
+    const RoleModel = require('./role.model');
+
     return {
       profile: {
         relation: Model.HasOneRelation,
@@ -45,6 +44,27 @@ class UserModel extends Model {
     return {
       loginSelects(query) {
         query.select('id_user', 'username');
+      },
+
+      defaultSelects(query) {
+        query.select(
+          'sso.user.id_user',
+          'sso.user.username',
+          'sso.user.email',
+          'sso.user.referral_code',
+          'sso.user.signup_with',
+          'sso.user.is_email',
+          'sso.user.is_active',
+          'sso.user.is_delete',
+          'sso.user.created_id',
+          'sso.user.created_at',
+          'sso.user.modified_id',
+          'sso.user.modified_at'
+        );
+      },
+
+      invitationSelects(query) {
+        query.select('sso.user.id_user', 'sso.user.username');
       },
     };
   }

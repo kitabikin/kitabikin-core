@@ -2,6 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const app = express();
+const node = process.env.NODE_ENV;
 const port = process.env.PORT || 3000;
 const http = require('http').Server(app);
 
@@ -27,5 +28,5 @@ app.get('/', function (req, res) {
 app.use(routes);
 
 http.listen(port, () => {
-  console.log('Server started on port ' + port);
+  console.log('Server ' + node + ' started on port ' + port);
 });

@@ -62,4 +62,5 @@ const getFilter = (f, schema, where) => {
 
 module.exports = {
   Filter,
+  getFilter,
 };
