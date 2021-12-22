@@ -9,12 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Create ENV file
         run: |
           touch .env
-          echo NODE_ENV=${{ secrets.DEV_NODE_ENV }} >> .env
-          echo PORT=${{ secrets.DEV_PORT }} >> .env
+          echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
+          echo PORT=${{ secrets.PORT }} >> .env
           cat .env
 
       - name: Checkout
