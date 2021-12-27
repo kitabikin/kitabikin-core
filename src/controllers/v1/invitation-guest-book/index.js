@@ -24,7 +24,7 @@ router.post('/', create);
 router.get('/:uniq', CheckToken, read);
 
 // Update
-router.put('/:uniq', [CheckAccess, CheckToken], create);
+router.put('/:uniq', [CheckAccess, CheckToken], update);
 router.put('/:uniq', update);
 
 module.exports = router;
