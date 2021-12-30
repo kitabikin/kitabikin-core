@@ -23,10 +23,12 @@
     "moment": "^2.29.1",
     "multer": "^1.4.3",
     "objection": "^2.2.18",
+    "pdfkit": "^0.13.0",
     "pg": "^8.7.1",
     "qrcode": "^1.5.0",
     "qs": "^6.10.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "xlsx": "^0.17.4"
   },
   "devDependencies": {
     "eslint": "^8.2.0",
