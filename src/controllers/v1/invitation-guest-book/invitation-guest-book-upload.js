@@ -44,6 +44,7 @@ async function getUpload(req) {
         type: item.jenis,
         from: 'admin',
         confirmation: 'notyet',
+        session: item.sesi || 1,
         qr_code: qrCode,
         qr_code_url: qrCodeUrl,
       };
