@@ -9,6 +9,7 @@ const { create } = require('./invitation-guest-book-create');
 const { read } = require('./invitation-guest-book-read');
 const { update } = require('./invitation-guest-book-update');
 const { upload } = require('./invitation-guest-book-upload');
+const { download } = require('./invitation-guest-book-download');
 
 const router = express.Router();
 
@@ -22,14 +23,17 @@ router.get('/', CheckToken, list);
 router.post('/', [CheckAccess, CheckToken], create);
 router.post('/', create);
 
+// Upload
+router.post('/upload', [CheckToken, singleExcel.single('file')], upload);
+
+// Download
+router.get('/download', CheckToken, download);
+
 // Read
 router.get('/:uniq', CheckToken, read);
 
 // Update
 router.put('/:uniq', [CheckAccess, CheckToken], update);
 router.put('/:uniq', update);
-
-// Upload
-router.post('/upload', [CheckToken, singleExcel.single('file')], upload);
 
 module.exports = router;
