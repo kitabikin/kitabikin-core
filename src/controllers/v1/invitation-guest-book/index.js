@@ -30,7 +30,7 @@ router.post('/upload', [CheckToken, singleExcel.single('file')], upload);
 router.get('/download', CheckToken, download);
 
 // Read
-router.get('/:uniq', CheckToken, read);
+router.get('/:uniq', read);
 
 // Update
 router.put('/:uniq', [CheckAccess, CheckToken], update);

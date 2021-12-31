@@ -15,7 +15,7 @@ const CheckToken = (req, res, next) => {
   if (_.isNil(req.headers.authorization)) {
     res.status(403).json({
       code: 403,
-      error: true,
+      error: 1,
       message: 'Token missing',
       data: {},
     });
@@ -31,7 +31,7 @@ const CheckToken = (req, res, next) => {
       if (err) {
         return res.status(403).json({
           code: 403,
-          error: true,
+          error: 1,
           message: 'Token invalid',
           data: {},
         });
@@ -43,7 +43,7 @@ const CheckToken = (req, res, next) => {
   } else {
     res.status(403).json({
       code: 403,
-      error: true,
+      error: 1,
       message: 'Auth token is not supplied',
       data: {},
     });
