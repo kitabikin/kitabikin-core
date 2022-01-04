@@ -28,7 +28,12 @@ const getPopulate = (f, populate, access) => {
           }
           break;
         case 'parrent':
-          f.withGraphJoined('parent');
+          f.withGraphJoined('parent(onlyNotYet)');
+          f.modifiers({
+            onlyNotYet(builder) {
+              builder.where('confirmation', 'notyet');
+            },
+          });
           break;
         default:
           break;
