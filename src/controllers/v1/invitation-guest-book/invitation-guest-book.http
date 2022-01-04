@@ -32,6 +32,9 @@ Authorization: Bearer {{token}}
 GET {{baseUrl}}{{version}}/{{endpoint}}
     ?start=0
     &with[invitation]=true
+    &with[parrent]=true
+    &where[0][confirmation][0]=yes
+    &where[0][confirmation][1]=no
     &limit=4 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer {{token}}

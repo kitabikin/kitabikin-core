@@ -27,6 +27,9 @@ const getPopulate = (f, populate, access) => {
             f.withGraphJoined('invitation');
           }
           break;
+        case 'parrent':
+          f.withGraphJoined('parent');
+          break;
         default:
           break;
       }
