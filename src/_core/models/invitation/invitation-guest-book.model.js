@@ -14,6 +14,7 @@ class InvitationGuestBookModel extends Model {
 
   static get relationMappings() {
     const InvitationModel = require('./invitation.model');
+    const InvitationGuestBookModel = require('./invitation-guest-book.model');
 
     return {
       invitation: {
@@ -22,6 +23,14 @@ class InvitationGuestBookModel extends Model {
         join: {
           from: 'invitation.invitation_guest_book.id_invitation',
           to: 'invitation.invitation.id_invitation',
+        },
+      },
+      parent: {
+        relation: Model.HasOneRelation,
+        modelClass: InvitationGuestBookModel,
+        join: {
+          from: 'invitation.invitation_guest_book.name',
+          to: 'invitation.invitation_guest_book.name',
         },
       },
     };
