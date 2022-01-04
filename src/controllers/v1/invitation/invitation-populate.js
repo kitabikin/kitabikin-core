@@ -75,16 +75,16 @@ const getPopulate = (f, populate, access) => {
           break;
         case 'invitation_greeting':
           if (access === 'private') {
-            f.withGraphJoined('invitation_greeting(orderByIGModifiedAt)');
+            f.withGraphJoined('invitation_greeting');
           } else {
-            f.withGraphJoined('invitation_greeting(publicSelects, orderByIGModifiedAt)');
+            f.withGraphJoined('invitation_greeting(publicSelects)');
           }
 
-          f.modifiers({
-            orderByIGModifiedAt(builder) {
-              builder.where('invitation.invitation_guest_book.modified_at', 'desc');
-            },
-          });
+          // f.modifiers({
+          //   orderByIGModifiedAt(builder) {
+          //     builder.where('invitation.invitation_guest_book.modified_at', 'desc');
+          //   },
+          // });
           break;
         default:
           break;
