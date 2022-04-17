@@ -13,7 +13,7 @@ const Populate = (f, populate) => {
   }
 };
 
-const getPopulate = (f, populate) => {
+const getPopulate = (f, populate, access) => {
   Object.keys(populate).map((k) => {
     const key = k;
     const value = populate[k] === 'true';
@@ -21,10 +21,10 @@ const getPopulate = (f, populate) => {
     if (value) {
       switch (key) {
         case 'event_package':
-          f.withGraphFetched('[event_package]');
+          f.withGraphJoined('[event_package]');
           break;
         case 'event_price':
-          f.withGraphFetched('[event_package.[event_price(orderByCreatedAt)]]');
+          f.withGraphJoined('[event_package.[event_price(orderByCreatedAt)]]');
           break;
         default:
           break;
