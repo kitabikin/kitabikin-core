@@ -1,8 +1,9 @@
 const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
 const EventModel = require('@core/models/invitation/event.model');
 
 const _ = require('lodash');
+const { Populate } = require('./event-populate');
+const { Filter } = require('./event-filter');
 
 const read = async (req, res) => {
   try {
@@ -23,16 +24,34 @@ const read = async (req, res) => {
 };
 
 async function getRead(req) {
+  const access = req.access;
   const pUniq = req.params.uniq;
   const where = req.query.where;
+  const populate = req.query.with;
 
   const fWhere = (f) => {
     if (!_.isNil(where)) {
-      Filter(f, 'invitation.event', where);
+      Filter(f, where);
     }
   };
 
-  const qRead = await EventModel.query().first().returning('*').findById(pUniq).modify(fWhere);
+  const fWith = (f) => {
+    if (!_.isNil(populate)) {
+      Populate(f, populate, access);
+    }
+  };
+
+  let qRead;
+  if (access === 'private') {
+    qRead = await EventModel.query().first().returning('*').findById(pUniq).modify(fWhere);
+  } else {
+    qRead = await EventModel.query()
+      .first()
+      .modify('publicSelects')
+      .modify('filterCode', pUniq)
+      .modify(fWhere)
+      .modify(fWith);
+  }
 
   return qRead;
 }
