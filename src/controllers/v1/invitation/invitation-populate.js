@@ -80,11 +80,9 @@ const getPopulate = (f, populate, access) => {
             f.withGraphJoined('invitation_greeting(publicSelects)');
           }
 
-          // f.modifiers({
-          //   orderByIGModifiedAt(builder) {
-          //     builder.where('invitation.invitation_guest_book.modified_at', 'desc');
-          //   },
-          // });
+          f.modifyGraph('invitation_greeting', (builder) => {
+            builder.orderBy('invitation.invitation_greeting.created_at', 'desc');
+          });
           break;
         default:
           break;

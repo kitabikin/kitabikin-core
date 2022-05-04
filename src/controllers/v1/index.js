@@ -17,6 +17,7 @@ const invitationFeature = require('./invitation-feature');
 const invitationFeatureData = require('./invitation-feature-data');
 const invitationGreeting = require('./invitation-greeting');
 const invitationGuestBook = require('./invitation-guest-book');
+const Testimonial = require('./testimonial');
 
 const router = express.Router();
 
@@ -37,5 +38,6 @@ router.use('/invitation-feature', invitationFeature);
 router.use('/invitation-feature-data', invitationFeatureData);
 router.use('/invitation-greeting', invitationGreeting);
 router.use('/invitation-guest-book', invitationGuestBook);
+router.use('/testimonial', Testimonial);
 
 module.exports = router;
