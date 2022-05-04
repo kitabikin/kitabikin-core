@@ -32,6 +32,10 @@ class ProfileModel extends Model {
       loginSelects(query) {
         query.select('id_profile', 'name', 'photo');
       },
+
+      invitationSelects(query) {
+        query.select('sso.profile.name');
+      },
     };
   }
 }

@@ -29,6 +29,10 @@ class InvitationGreetingModel extends Model {
 
   static get modifiers() {
     return {
+      orderByModifiedAt(query, dir) {
+        query.orderBy('invitation.invitation_greeting.modified_at', dir);
+      },
+
       publicSelects(query) {
         query.select(
           'invitation.invitation_greeting.name',
