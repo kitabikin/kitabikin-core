@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { CheckToken } = require('@core/helpers/middleware');
+const { CheckToken } = require('@/helpers/middleware');
 
 // const { total } = require('./invitation-feature-data-total');
 // const { list } = require('./invitation-feature-data-list');

@@ -37,12 +37,5 @@
     "eslint-plugin-promise": "^5.1.1",
     "eslint-plugin-standard": "^5.0.0",
     "nodemon": "^2.0.14"
-  },
-  "_moduleAliases": {
-    "@": ".",
-    "@core": "src/_core",
-    "@core/*": "src/_core/*",
-    "@controllers": "src/controllers",
-    "@controllers/*": "src/controllers/*"
   }
 }

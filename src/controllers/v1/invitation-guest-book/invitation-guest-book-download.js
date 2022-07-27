@@ -1,4 +1,4 @@
-const { ErrorHandler } = require('@core/helpers/response');
+const { ErrorHandler } = require('@/helpers/response');
 
 const { getList } = require('./invitation-guest-book-list');
 

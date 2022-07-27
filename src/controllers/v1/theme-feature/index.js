@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { CheckToken } = require('@core/helpers/middleware');
+const { CheckToken } = require('@/helpers/middleware');
 
 const { total } = require('./theme-feature-total');
 const { list } = require('./theme-feature-list');

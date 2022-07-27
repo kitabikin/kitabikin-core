@@ -1,6 +1,6 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
-const EventPackageModel = require('@core/models/invitation/event-package.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Filter } = require('@/helpers/filter');
+const EventPackageModel = require('@/models/invitation/event-package.model');
 
 const _ = require('lodash');
 const { Populate } = require('./event-package-populate');

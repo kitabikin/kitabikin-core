@@ -1,6 +1,6 @@
-const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Pagination } = require('@core/helpers/pagination');
-const UserModel = require('@core/models/sso/user.model');
+const { OkList, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Pagination } = require('@/helpers/pagination');
+const UserModel = require('@/models/sso/user.model');
 
 const { getTotal } = require('./user-total');
 const { Populate } = require('./user-populate');

@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const qs = require('qs');
 
-const { Filter: GlobalFilter } = require('@core/helpers/filter');
+const { Filter: GlobalFilter } = require('@/helpers/filter');
 
 const Filter = (f, where) => {
   const qsWhere = qs.parse(where);

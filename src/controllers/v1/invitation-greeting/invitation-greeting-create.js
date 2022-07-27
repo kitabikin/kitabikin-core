@@ -1,5 +1,5 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const InvitationGreetingModel = require('@core/models/invitation/invitation-greeting.model');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const InvitationGreetingModel = require('@/models/invitation/invitation-greeting.model');
 
 const create = async (req, res) => {
   try {

@@ -1,5 +1,5 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const UserModel = require('@core/models/sso/user.model');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const UserModel = require('@/models/sso/user.model');
 
 const moment = require('moment');
 const _ = require('lodash');

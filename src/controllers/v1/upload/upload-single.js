@@ -1,5 +1,5 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const cloudinary = require('@core/config/cloudinary');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const cloudinary = require('@/config/cloudinary');
 
 const single = async (req, res) => {
   try {

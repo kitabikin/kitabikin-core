@@ -1,7 +1,7 @@
-const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
-const { Pagination } = require('@core/helpers/pagination');
-const ApplicationModel = require('@core/models/sso/application.model');
+const { OkList, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Filter } = require('@/helpers/filter');
+const { Pagination } = require('@/helpers/pagination');
+const ApplicationModel = require('@/models/sso/application.model');
 
 const { getTotal } = require('./application-total');
 

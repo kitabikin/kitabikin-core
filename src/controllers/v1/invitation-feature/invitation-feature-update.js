@@ -1,5 +1,5 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const InvitationFeatureModel = require('@core/models/invitation/invitation-feature.model');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const InvitationFeatureModel = require('@/models/invitation/invitation-feature.model');
 
 const _ = require('lodash');
 

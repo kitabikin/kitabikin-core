@@ -1,6 +1,6 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const { GenerateQRCode } = require('@core/helpers/qrcode');
-const InvitationGuestBookModel = require('@core/models/invitation/invitation-guest-book.model');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const { GenerateQRCode } = require('@/helpers/qrcode');
+const InvitationGuestBookModel = require('@/models/invitation/invitation-guest-book.model');
 
 const _ = require('lodash');
 const { v4: uuidv4 } = require('uuid');

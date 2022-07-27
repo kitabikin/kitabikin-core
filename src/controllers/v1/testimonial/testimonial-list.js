@@ -1,7 +1,7 @@
-const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
-const { Pagination } = require('@core/helpers/pagination');
-const TestimonialModel = require('@core/models/invitation/testimonial.model');
+const { OkList, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Filter } = require('@/helpers/filter');
+const { Pagination } = require('@/helpers/pagination');
+const TestimonialModel = require('@/models/invitation/testimonial.model');
 
 const { getTotal } = require('./testimonial-total');
 const { Populate } = require('./testimonial-populate');

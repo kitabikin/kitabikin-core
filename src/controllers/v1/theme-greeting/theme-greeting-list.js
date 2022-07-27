@@ -1,6 +1,6 @@
-const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Pagination } = require('@core/helpers/pagination');
-const ThemeGreetingModel = require('@core/models/invitation/theme-greeting.model');
+const { OkList, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Pagination } = require('@/helpers/pagination');
+const ThemeGreetingModel = require('@/models/invitation/theme-greeting.model');
 
 const { getTotal } = require('./theme-greeting-total');
 const { Populate } = require('./theme-greeting-populate');

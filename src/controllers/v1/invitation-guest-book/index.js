@@ -1,7 +1,7 @@
 const express = require('express');
 
-const { CheckAccess, CheckToken } = require('@core/helpers/middleware');
-const { singleExcel } = require('@core/helpers/multer');
+const { CheckAccess, CheckToken } = require('@/helpers/middleware');
+const { singleExcel } = require('@/helpers/multer');
 
 const { total } = require('./invitation-guest-book-total');
 const { list } = require('./invitation-guest-book-list');

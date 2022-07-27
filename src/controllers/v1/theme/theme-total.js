@@ -1,5 +1,5 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const ThemeModel = require('@core/models/invitation/theme.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const ThemeModel = require('@/models/invitation/theme.model');
 
 const { Relation } = require('./theme-populate');
 const { Filter } = require('./theme-filter');

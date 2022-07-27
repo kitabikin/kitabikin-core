@@ -1,9 +1,9 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const InvitationModel = require('@core/models/invitation/invitation.model');
-const ThemeFeatureMappingModel = require('@core/models/invitation/theme-feature-mapping.model');
-const ThemeFeatureColumnModel = require('@core/models/invitation/theme-feature-column.model');
-const InvitationFeatureModel = require('@core/models/invitation/invitation-feature.model');
-const InvitationFeatureDataModel = require('@core/models/invitation/invitation-feature-data.model');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const InvitationModel = require('@/models/invitation/invitation.model');
+const ThemeFeatureMappingModel = require('@/models/invitation/theme-feature-mapping.model');
+const ThemeFeatureColumnModel = require('@/models/invitation/theme-feature-column.model');
+const InvitationFeatureModel = require('@/models/invitation/invitation-feature.model');
+const InvitationFeatureDataModel = require('@/models/invitation/invitation-feature-data.model');
 
 const moment = require('moment');
 const _ = require('lodash');

@@ -1,7 +1,7 @@
-const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
-const { Pagination } = require('@core/helpers/pagination');
-const EventPackageModel = require('@core/models/invitation/event-package.model');
+const { OkList, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Filter } = require('@/helpers/filter');
+const { Pagination } = require('@/helpers/pagination');
+const EventPackageModel = require('@/models/invitation/event-package.model');
 
 const { getTotal } = require('./event-package-total');
 const { Populate } = require('./event-package-populate');

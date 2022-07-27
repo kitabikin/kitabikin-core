@@ -1,6 +1,6 @@
-const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Pagination } = require('@core/helpers/pagination');
-const InvitationFeatureModel = require('@core/models/invitation/invitation-feature.model');
+const { OkList, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Pagination } = require('@/helpers/pagination');
+const InvitationFeatureModel = require('@/models/invitation/invitation-feature.model');
 
 const { getTotal } = require('./invitation-feature-total');
 const { Populate } = require('./invitation-feature-populate');
