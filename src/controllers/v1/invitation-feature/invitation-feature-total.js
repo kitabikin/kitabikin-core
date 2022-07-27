@@ -1,5 +1,5 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const InvitationFeatureModel = require('@core/models/invitation/invitation-feature.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const InvitationFeatureModel = require('@/models/invitation/invitation-feature.model');
 
 const { Relation } = require('./invitation-feature-populate');
 const { Filter } = require('./invitation-feature-filter');

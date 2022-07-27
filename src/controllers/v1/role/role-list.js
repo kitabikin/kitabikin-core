@@ -1,7 +1,7 @@
-const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
-const { Pagination } = require('@core/helpers/pagination');
-const RoleModel = require('@core/models/sso/role.model');
+const { OkList, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Filter } = require('@/helpers/filter');
+const { Pagination } = require('@/helpers/pagination');
+const RoleModel = require('@/models/sso/role.model');
 
 const { getTotal } = require('./role-total');
 

@@ -1,5 +1,5 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const UserModel = require('@core/models/invitation/testimonial.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const UserModel = require('@/models/invitation/testimonial.model');
 
 const { Relation } = require('./testimonial-populate');
 const { Filter } = require('./testimonial-filter');

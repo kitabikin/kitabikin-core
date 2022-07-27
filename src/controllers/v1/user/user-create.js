@@ -1,5 +1,5 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const UserModel = require('@core/models/sso/user.model');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const UserModel = require('@/models/sso/user.model');
 
 const _ = require('lodash');
 const SHA256 = require('crypto-js/sha256');

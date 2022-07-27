@@ -1,5 +1,5 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const InvitationGreetingModel = require('@core/models/invitation/invitation-greeting.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const InvitationGreetingModel = require('@/models/invitation/invitation-greeting.model');
 
 const _ = require('lodash');
 const { Populate } = require('./invitation-greeting-populate');

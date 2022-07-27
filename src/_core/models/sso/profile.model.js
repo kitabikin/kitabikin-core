@@ -1,5 +1,5 @@
 const { Model } = require('objection');
-const { db } = require('@core/config/connection');
+const { db } = require('@/config/connection');
 
 Model.knex(db);
 

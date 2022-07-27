@@ -1,6 +1,6 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
-const ApplicationModel = require('@core/models/sso/application.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Filter } = require('@/helpers/filter');
+const ApplicationModel = require('@/models/sso/application.model');
 
 const _ = require('lodash');
 

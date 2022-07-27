@@ -1,7 +1,7 @@
-const { OkList, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
-const { Pagination } = require('@core/helpers/pagination');
-const ThemeCategoryModel = require('@core/models/invitation/theme-category.model');
+const { OkList, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Filter } = require('@/helpers/filter');
+const { Pagination } = require('@/helpers/pagination');
+const ThemeCategoryModel = require('@/models/invitation/theme-category.model');
 
 const { getTotal } = require('./theme-category-total');
 const { Populate } = require('./theme-category-populate');

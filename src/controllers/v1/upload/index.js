@@ -1,7 +1,7 @@
 const express = require('express');
 
-const { CheckToken } = require('@core/helpers/middleware');
-const { singleImage } = require('@core/helpers/multer');
+const { CheckToken } = require('@/helpers/middleware');
+const { singleImage } = require('@/helpers/multer');
 
 const { single } = require('./upload-single');
 

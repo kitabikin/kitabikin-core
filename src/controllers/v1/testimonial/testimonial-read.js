@@ -1,5 +1,5 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const TestimonialModel = require('@core/models/invitation/testimonial.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const TestimonialModel = require('@/models/invitation/testimonial.model');
 
 const _ = require('lodash');
 const { Populate } = require('./testimonial-populate');

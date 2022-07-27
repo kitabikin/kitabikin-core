@@ -1,5 +1,5 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const InvitationGuestBookModel = require('@core/models/invitation/invitation-guest-book.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const InvitationGuestBookModel = require('@/models/invitation/invitation-guest-book.model');
 
 const { Relation } = require('./invitation-guest-book-populate');
 const { Filter } = require('./invitation-guest-book-filter');

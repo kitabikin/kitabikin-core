@@ -1,6 +1,6 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const { Filter } = require('@core/helpers/filter');
-const ThemeCategoryModel = require('@core/models/invitation/theme-category.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const { Filter } = require('@/helpers/filter');
+const ThemeCategoryModel = require('@/models/invitation/theme-category.model');
 
 const _ = require('lodash');
 const { Populate } = require('./theme-category-populate');

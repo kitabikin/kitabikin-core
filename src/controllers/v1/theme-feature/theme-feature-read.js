@@ -1,5 +1,5 @@
-const { Ok, ErrorNotFound, ErrorHandler } = require('@core/helpers/response');
-const ThemeFeatureModel = require('@core/models/invitation/theme-feature.model');
+const { Ok, ErrorNotFound, ErrorHandler } = require('@/helpers/response');
+const ThemeFeatureModel = require('@/models/invitation/theme-feature.model');
 
 const _ = require('lodash');
 const { Populate } = require('./theme-feature-populate');

@@ -1,5 +1,5 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const TestimonialModel = require('@core/models/invitation/testimonial.model');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const TestimonialModel = require('@/models/invitation/testimonial.model');
 
 const moment = require('moment');
 const _ = require('lodash');

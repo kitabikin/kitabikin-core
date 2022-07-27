@@ -1,5 +1,5 @@
-const { Ok, ErrorHandler } = require('@core/helpers/response');
-const RoleModel = require('@core/models/sso/role.model');
+const { Ok, ErrorHandler } = require('@/helpers/response');
+const RoleModel = require('@/models/sso/role.model');
 
 const moment = require('moment');
 
