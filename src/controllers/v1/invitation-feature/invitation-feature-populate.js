@@ -32,6 +32,9 @@ const getPopulate = (f, populate, isTotal = false) => {
 
     if (value) {
       switch (key) {
+        case 'theme_feature_mapping':
+          f.withGraphJoined('theme_feature_mapping.[theme_feature]');
+          break;
         case 'theme_feature':
           if (isTotal) {
             f.leftJoin(
