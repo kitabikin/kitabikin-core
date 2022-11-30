@@ -34,6 +34,9 @@ const getFilter = (f, where) => {
       case 'theme_feature':
         GlobalFilter(f, 'theme_feature', { [newKey]: where[k] });
         break;
+      case 'theme_feature_column':
+        GlobalFilter(f, 'theme_feature:theme_feature_column', { [newKey]: where[k] });
+        break;
       case 'invitation_feature_data':
         GlobalFilter(f, 'invitation_feature_data', { [newKey]: where[k] });
         break;

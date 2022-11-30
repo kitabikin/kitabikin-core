@@ -84,6 +84,13 @@ const getPopulate = (f, populate, access) => {
             builder.orderBy('invitation.invitation_greeting.created_at', 'desc');
           });
           break;
+        case 'invitation_guest_book_template':
+          if (access === 'private') {
+            f.withGraphJoined('invitation_guest_book_template as template');
+          } else {
+            f.withGraphJoined('invitation_guest_book_template as template');
+          }
+          break;
         default:
           break;
       }

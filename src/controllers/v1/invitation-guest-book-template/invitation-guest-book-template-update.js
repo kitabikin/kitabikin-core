@@ -1,5 +1,5 @@
 const { Ok, ErrorHandler } = require('@/helpers/response');
-const InvitationGuestBookModel = require('@/models/invitation/invitation-guest-book.model');
+const InvitationGuestBookTemplateModel = require('@/models/invitation/invitation-guest-book-template.model');
 
 const moment = require('moment');
 const _ = require('lodash');
@@ -20,21 +20,14 @@ const update = async (req, res) => {
 async function getUpdate(req) {
   const access = req.access;
   const pUniq = req.params.uniq;
-  const qModifiedAt = req.query.modified_at || 'true';
   const modifiedAt = moment().format('YYYY-MM-DD HH:mm:ss.SSS');
 
   const update = req.body;
 
   _.assign(update, {
-    id_invitation_guest_book: pUniq,
+    id_invitation_guest_book_template: pUniq,
+    modified_at: modifiedAt,
   });
-
-  const mAt = qModifiedAt === 'true';
-  if (mAt) {
-    _.assign(update, {
-      modified_at: modifiedAt,
-    });
-  }
 
   if (access === 'private') {
     _.assign(update, {
@@ -42,7 +35,7 @@ async function getUpdate(req) {
     });
   }
 
-  const qUpdate = await InvitationGuestBookModel.query().first().upsertGraphAndFetch(update);
+  const qUpdate = await InvitationGuestBookTemplateModel.query().first().upsertGraphAndFetch(update);
 
   return qUpdate;
 }

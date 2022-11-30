@@ -20,6 +20,7 @@ class InvitationModel extends Model {
     const ThemeModel = require('./theme.model');
     const InvitationFeatureModel = require('./invitation-feature.model');
     const InvitationGreetingModel = require('./invitation-greeting.model');
+    const InvitationGuestBookTemplateModel = require('./invitation-guest-book-template.model');
 
     return {
       user: {
@@ -76,6 +77,14 @@ class InvitationModel extends Model {
         join: {
           from: 'invitation.invitation.id_invitation',
           to: 'invitation.invitation_greeting.id_invitation',
+        },
+      },
+      invitation_guest_book_template: {
+        relation: Model.HasOneRelation,
+        modelClass: InvitationGuestBookTemplateModel,
+        join: {
+          from: 'invitation.invitation.id_invitation_guest_book_template',
+          to: 'invitation.invitation_guest_book_template.id_invitation_guest_book_template',
         },
       },
     };
