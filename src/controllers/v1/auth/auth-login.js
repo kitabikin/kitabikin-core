@@ -57,6 +57,7 @@ async function createToken(data) {
   const bodyJWT = {
     id_application: data.role[0].application.id_application,
     id_role: data.role[0].id_role_alias,
+    role: data.role[0].code,
     id_user: data.id_user,
     username: data.username,
   };
