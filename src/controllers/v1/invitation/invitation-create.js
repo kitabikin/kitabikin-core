@@ -4,8 +4,28 @@ const ThemeFeatureMappingModel = require('@/models/invitation/theme-feature-mapp
 const ThemeFeatureColumnModel = require('@/models/invitation/theme-feature-column.model');
 const InvitationFeatureModel = require('@/models/invitation/invitation-feature.model');
 const InvitationFeatureDataModel = require('@/models/invitation/invitation-feature-data.model');
+const InvitationGuestBookTemplateModel = require('@/models/invitation/invitation-guest-book-template.model');
 
 const _ = require('lodash');
+
+const template = `Bismillahirrahmanirrahim,
+
+Turut mengundang teman-teman, sahabat, dan keluarga untuk hadir dalam acara pernikahan Kami:
+Pengantin Wanita
+         & 
+Pengantin Pria
+
+Yang akan diselenggarakan pada:
+Hari        : Jumat, 17 Agustus 1945
+Tempat  : Istana Negara
+Jl. Medan Merdeka Utara No.3, RT.2/RW.3, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110
+
+Kehadiran dan doa restu dari keluarga, sahabat, dan teman-teman akan semakin melengkapi hari kebahagiaan kami.
+
+{link}
+
+Kami yang berbahagia,
+Pengantin Wanita & Pengantin Pria`;
 
 const create = async (req, res) => {
   try {
@@ -23,10 +43,22 @@ const create = async (req, res) => {
 async function getCreate(req) {
   const createdId = req.decoded.id_user;
 
+  // Insert Guest Book Template
+  const bodyTemplate = {
+    template: template,
+    created_id: createdId,
+  };
+
+  const insertTemplate = await InvitationGuestBookTemplateModel.query()
+    .first()
+    .insertGraphAndFetch(bodyTemplate);
+
+  // Insert Invitation
   const insert = req.body;
 
   _.assign(insert, {
     created_id: createdId,
+    id_invitation_guest_book_template: insertTemplate.id_invitation_guest_book_template,
   });
 
   const qInsert = await InvitationModel.query().first().insertGraphAndFetch(insert);
