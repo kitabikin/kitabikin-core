@@ -103,6 +103,7 @@ class InvitationModel extends Model {
           'invitation.invitation.name',
           'invitation.invitation.invitation_at',
           'invitation.invitation.description',
+          'invitation.invitation.metadata',
           'invitation.invitation.is_active'
         );
       },
